@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Main Menu</title>
+    <link rel="stylesheet" href="../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}" type="text/css">
+</head>
+
+<body>
+<nav class="navbar navbar-dark bg-dark">
+  <span class="navbar-text">
+   <a> <h2>Car Dealer
+      <button class="btn btn-outline-warning" onclick="window.location.href = '/dev-contact';">Dev Contact</button>
+   </h2></a>
+  </span></nav>
+
+<div class="container">
+    <br>
+    <h2>Car Dealer</h2>
+    <br>
+
+    <form>
+        <div class="form-row">
+            <div class="col">
+                <a href="/dealer/seeAll" class="form-control">Dealers List</a><br>
+                <a href="/car/seeAll" class="form-control">Cars List</a><br>
+            </div>
+
+
+            <div class="col-2">
+                <a href="/dealer/getForm" class="form-control">Add Dealer</a><br>
+                <a href="/car/getForm" class="form-control">Add Car</a> <br>
+            </div>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="result" data-th-each="dealer : ${list}">
+                <td th:text="${dealer.id}"></td>
+                <td th:text="${dealer.name}"></td>
+                <td th:text="${dealer.address}"></td>
+                <td th:text="${dealer.city}"></td>
+                <td th:text="${dealer.openHours}"></td>
+                <td th:text="${dealer.phone}"></td>
+                <td th:text="${dealer.email}"></td>
+                <td class="action-td">
+                    <form method="post" class="padding5px" action="#" th:action="@{/dealer/delete}">
+                        <input type="hidden" th:name="dealer_id" th:value="${dealer.id}">
+                        <input type="submit" class="btn btn-danger" value="Delete">
+                    </form>
+                    <form method="post" class="padding5px" action="#" th:action="@{/dealer/edit}">
+                        <input type="hidden" th:name="dealer_id" th:value="${dealer.id}">
+                        <input type="submit" class="btn btn-warning" value="Edit">
+                    </form>
+                </td>
+            </tr>
+        </div>
+    </form>
+
+</div>
+</body>
+</html>

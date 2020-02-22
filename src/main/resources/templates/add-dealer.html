@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Dealer Add Form</title>
+    <link rel="stylesheet" href="../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}" type="text/css">
+    <link rel="stylesheet" href="../static/css/main.css" th:href="@{/css/main.css}" type="text/css">
+</head>
+<body>
+<nav class="navbar navbar-dark bg-dark">
+  <span class="navbar-text">
+   <a> <h3>Car Dealer
+        <button class="btn btn-outline-warning" onclick="window.location.href = '/';">Main menu</button>
+      <button class="btn btn-outline-warning" onclick="window.location.href = '/dev-contact';">Dev Contact</button>
+   </h3></a>
+  </span></nav>
+
+    <div class="container">
+        <br>
+        <h2> Add Dealer</h2>
+        </br>
+
+        <form action="#" class="form-group" th:action="@{/dealer/save}" th:object="${dealer}" method="post">
+            <input type="hidden" th:field="*{id}">
+            <label>Dealer's Name <input type="text" class="form-control" th:field="*{name}" placeholder="ex. Zemsta Janusza"
+                                        required></label>
+            <label>Address <input type="text" class="form-control" th:field="*{address}" placeholder="ex. Malinowego Nosa 55"
+                                  required></label>
+            <label>City <input type="text" class="form-control" th:field="*{city}" placeholder="ex. Warszawa"
+                               required></label><br>
+            <label>Open hours <input type="text" class="form-control" th:field="*{openHours}" placeholder="ex. 9-17"
+                                     required></label>
+            <label>Phone <input type="text" class="form-control" th:field="*{phone}" placeholder="ex. 600 600 600" required></label>
+            <label>E-mail <input type="text" class="form-control" th:field="*{email}" placeholder="ex. abcd@wp.pl"
+                                 required></label><br>
+            </label><br>
+            <input type="submit" class="btn btn-danger" value="Save">
+        </form>
+        <hr>
+</div>
+</body>
+</html>

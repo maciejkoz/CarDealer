@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Add Car</title>
+    <link rel="stylesheet" href="../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}" type="text/css">
+    <link rel="stylesheet" href="../static/css/main.css" th:href="@{/css/main.css}" type="text/css">
+</head>
+
+<body>
+<nav class="navbar navbar-dark bg-dark">
+  <span class="navbar-text">
+   <a> <h2>Car Dealer
+        <button class="btn btn-outline-warning" onclick="window.location.href = '/';">Main menu</button>
+        <button class="btn btn-outline-warning" onclick="window.location.href = '/dev-contact';">Dev Contact</button>
+      </h2></a>
+  </span></nav>
+
+    <div class="container">
+        <br>
+        <h2>Add Car </h2>
+        <br>
+
+    <form action="#" class="form-group" th:action="@{/car/save}" th:object="${car}" method="post">
+        <input type="hidden" th:field="*{id}">
+        <label>Dealer's Name
+            <select class="form-control" name="item.id" required>
+                <option value="">Select Dealer</option>
+                <option th:each="item : ${dealersList}"
+                        th:value="${item.id}"
+                        th:text="${item.name} + ' - ' + ${item.city}"></option>
+            </select>
+        </label>
+
+        <label>Brand <input type="text" class="form-control" th:field="*{brand}" placeholder="ex. Audi"
+                                required></label>
+        <label>Model <input type="text" class="form-control" th:field="*{model}" placeholder="ex. A8"
+                                required></label>
+        <label>Engine <input type="text" class="form-control" th:field="*{engine}" placeholder="ex. 2.0 TDI"
+                                required></label><br>
+        <label>Year of production <input type="text" class="form-control" th:field="*{year}" placeholder="eg. 2020"
+                                             required></label>
+        <label>Mileage in km <input type="text" class="form-control" th:field="*{mileage}" placeholder="ex. 199 000"
+                                required></label>
+        <label>Colour <input type="text" class="form-control" th:field="*{colour}" placeholder="ex. Red Metallic"
+                                         required></label>
+        <label>Price in PLN in km <input type="text" class="form-control" th:field="*{price}" placeholder="ex. 49 000"
+                                         required></label><br>
+        <input type="submit" class="btn btn-danger" value="Save">
+
+    </form><hr>
+    </div>
+</body>
+</html>

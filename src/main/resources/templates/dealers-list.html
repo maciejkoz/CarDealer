@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:form="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Dealers List</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}" type="text/css">
+    <link rel="stylesheet" href="../static/css/main.css" th:href="@{/css/main.css}" type="text/css">
+</head>
+<body>
+
+
+<nav class="navbar navbar-dark bg-dark">
+  <span class="navbar-text">
+   <a> <h3>Car Dealer
+        <button class="btn btn-outline-warning" onclick="window.location.href = '/';">Main menu</button>
+      <button class="btn btn-outline-warning" onclick="window.location.href = '/dev_contact';">Dev Contact</button>
+   </h3></a>
+  </span></nav>
+
+<div class="container-fluid">
+    <br>
+    <h2>Dealer's Lis</h2>
+    <br>
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>Dealer's Name</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>OpenHours</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="result" data-th-each="dealer : ${list}">
+                <td th:text="${dealer.id}"></td>
+                <td th:text="${dealer.name}"></td>
+                <td th:text="${dealer.address}"></td>
+                <td th:text="${dealer.city}"></td>
+                <td th:text="${dealer.openHours}"></td>
+                <td th:text="${dealer.phone}"></td>
+                <td th:text="${dealer.email}"></td>
+                <td class="action-td">
+                    <form method="post" class="padding5px" action="#" th:action="@{/dealer/delete}">
+                        <input type="hidden" th:name="dealer_id" th:value="${dealer.id}">
+                        <input type="submit" class="btn btn-danger" value="Delete">
+                    </form>
+                    <form method="post" class="padding5px" action="#" th:action="@{/dealer/edit}">
+                        <input type="hidden" th:name="dealer_id" th:value="${dealer.id}">
+                        <input type="submit" class="btn btn-warning" value="Edit">
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
