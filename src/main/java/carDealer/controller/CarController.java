@@ -48,7 +48,6 @@ public class CarController {
     @RequestMapping(value = "/save")
     public ModelAndView save(@ModelAttribute(value = "car") Cars car
             , @ModelAttribute(value = "item.id") String itemId)
-//            , @RequestParam(value = "date") String date)
     {
         int idAsInt = Integer.parseInt(itemId);
         Dealers dealerToSet = dealersList.stream().filter(f -> f.getId() == idAsInt).findFirst().get();

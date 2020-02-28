@@ -10,4 +10,9 @@ public class IndexController {
     public String indexGet() {
         return "index";
     }
+
+    @RequestMapping("/dev-contact")
+    public String devContactGet() {
+        return "dev-contact";
+    }
 }
