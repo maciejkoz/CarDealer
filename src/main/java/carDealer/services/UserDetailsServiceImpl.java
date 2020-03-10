@@ -21,6 +21,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Autowired
     private EntityManager entityManager;
 
+
     @Autowired
     public UserDetailsServiceImpl(AppUserRepository appUserRepository) {
         this.appUserRepository = appUserRepository;
@@ -45,8 +46,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     public void delete(AppUser appUser){
         appUser = entityManager.find(AppUser.class, appUser.getId());
-
-
         appUserRepository.delete(appUser);
     }
 

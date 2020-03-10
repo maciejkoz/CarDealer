@@ -18,20 +18,20 @@ import carDealer.services.UserDetailsServiceImpl;
 import carDealer.repository.AppUserRepository;
 
 @Configuration
-public class WebSecurtiyConfig extends WebSecurityConfigurerAdapter {
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private UserDetailsServiceImpl userDetailsService;
+    private UserDetailsServiceImpl userDetailsServiceImpl;
     private AppUserRepository appUserRepository;
 
     @Autowired
-    public WebSecurtiyConfig(UserDetailsServiceImpl userDetailsService, AppUserRepository appUserRepository) {
-        this.userDetailsService = userDetailsService;
+    public WebSecurityConfig(UserDetailsServiceImpl userDetailsServiceImpl, AppUserRepository appUserRepository) {
+        this.userDetailsServiceImpl = userDetailsServiceImpl;
         this.appUserRepository = appUserRepository;
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService);
+        auth.userDetailsService(userDetailsServiceImpl);
     }
 
     @Override
